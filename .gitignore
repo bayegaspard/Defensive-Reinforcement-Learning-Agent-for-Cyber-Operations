@@ -1,5 +1,5 @@
 # Model file
-/models
+/models/llama-3-8b-instruct.gguf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
