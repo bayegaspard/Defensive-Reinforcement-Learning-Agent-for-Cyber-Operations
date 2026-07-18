@@ -11,6 +11,12 @@ class SuspiciousFile:
         deleted: bool = False
     ):
         self.path = path
-        self.analysis_status = FileAnalysis(analysis_status)
+        
+        try:
+            self.analysis_status = FileAnalysis(analysis_status)
+        except ValueError:
+            print("Value Error: invalid File Analysis found within suspicious file definiton")
+            raise ValueError
+
         self.quarantined = quarantined
         self.deleted = deleted
