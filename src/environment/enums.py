@@ -3,9 +3,9 @@ from enum import Enum
 
 class HostStatus(Enum):
     ONLINE = "online"
-    UNDER_ATTACK = "under_attack"
     COMPROMISED = "compromised"
-    OFFLINE = "offline"
+    RESTORED = "restored"
+    ISOLATED = "isolated"
 
 class ThreatSeverity(Enum):
     NONE = "none"
@@ -18,4 +18,3 @@ class FileAnalysis(Enum):
     NOT_ANALYZED = "not_analyzed"
     CLEAN = "clean"
     MALICIOUS = "malicious"
-    FAILED = "failed"   

@@ -8,7 +8,6 @@ class SuspiciousFile:
         path: str,
         analysis_status: str = "not_analyzed",
         quarantined: bool = False,
-        deleted: bool = False
     ):
         self.path = path
         
@@ -19,4 +18,3 @@ class SuspiciousFile:
             raise ValueError
 
         self.quarantined = quarantined
-        self.deleted = deleted

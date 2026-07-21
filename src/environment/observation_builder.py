@@ -13,17 +13,15 @@ def build_observation(environment: CyberEnvironment) -> State:
             path=environment.suspicious_file.path,
             analysis_status=environment.suspicious_file.analysis_status.value,
             quarantined=environment.suspicious_file.quarantined,
-            deleted=environment.suspicious_file.deleted
         )
 
     return State(        
 
         host_status=environment.host_status.value, 
-        suspicious_file=environment.suspicious_file,
+        suspicious_file=observed_file,
         open_ports=environment.open_ports,
         dns_anomaly=environment.dns_anomaly,
         threat_severity=environment.actual_threat_severity, #TODO later make observed severity imperfect or derived from telemetry
         host_isolated=environment.host_isolated,
-        administrator_notified=environment.administrator_notified,
         step_number=environment.current_step
     )

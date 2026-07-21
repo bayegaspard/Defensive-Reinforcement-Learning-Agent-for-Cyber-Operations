@@ -12,7 +12,6 @@ class State:
         dns_anomaly: bool = False,
         threat_severity: str = "none",
         host_isolated: bool = False,
-        administrator_notified: bool = False,
         step_number: int = 0
     ):
         
@@ -33,5 +32,4 @@ class State:
             raise ValueError
 
         self.host_isolated = host_isolated
-        self.administrator_notified = administrator_notified
         self.step_number = step_number

@@ -7,6 +7,7 @@ class CyberEnvironment:
     def __init__(
             self,
             host_status: str, 
+            host_restored: bool, 
             host_isolated: bool, 
             open_ports: list[int],
             malicious_ports: list[int] | None,
@@ -17,7 +18,6 @@ class CyberEnvironment:
             dns_anomaly_malicious: bool,  
             actual_threat_severity: str,
             threat_contained: bool,
-            administrator_notified: bool,
             current_step: int, 
             max_steps: int, 
             episode_done: bool, 
@@ -29,6 +29,7 @@ class CyberEnvironment:
             print("Value Error: invalid host status found within Cyber Environment definiton")
             raise ValueError
 
+        self.host_restored = host_restored
         self.host_isolated = host_isolated
         self.open_ports = open_ports
         self.malicious_ports = malicious_ports if malicious_ports is not None else []
@@ -47,10 +48,32 @@ class CyberEnvironment:
             raise ValueError
 
         self.threat_contained = threat_contained
-        self.administrator_notified = administrator_notified
         self.current_step = current_step
         self.max_steps = max_steps
         self.episode_done = episode_done
+    
+    # returns number of active threats
+    def get_active_threats(self) -> int:
+        count = 0
+
+        mp_count = 0
+        for port in self.open_ports:
+            if port in self.malicious_ports:
+                mp_count += 1
+
+        if self.suspicious_file is not None and self.suspicious_file_malicious and not self.suspicious_file.quarantined:
+            count += 1
+        if self.network_attack_active and mp_count > 0:
+            count += 1
+        if self.dns_anomaly_malicious and not self.host_isolated:
+            count += 1
+        if self.host_status.value == "compromised" and not self.host_restored:
+            count += 1
+        
+        return count
+        
+
+
             
 
 
