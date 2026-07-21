@@ -7,8 +7,6 @@ class CyberEnvironment:
     def __init__(
             self,
             host_status: str, 
-            host_restored: bool, 
-            host_isolated: bool, 
             open_ports: list[int],
             malicious_ports: list[int] | None,
             suspicious_file: str | None,
@@ -29,8 +27,6 @@ class CyberEnvironment:
             print("Value Error: invalid host status found within Cyber Environment definiton")
             raise ValueError
 
-        self.host_restored = host_restored
-        self.host_isolated = host_isolated
         self.open_ports = open_ports
         self.malicious_ports = malicious_ports if malicious_ports is not None else []
 
@@ -67,7 +63,7 @@ class CyberEnvironment:
             count += 1
         if self.dns_anomaly_malicious and not self.host_isolated:
             count += 1
-        if self.host_status.value == "compromised" and not self.host_restored:
+        if self.host_status.value == "compromised":
             count += 1
         
         return count
