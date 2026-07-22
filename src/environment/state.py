@@ -6,12 +6,11 @@ class State:
 
     def __init__(
         self,
-        host_status: str = "online",
+        host_status: HostStatus = "online",
         suspicious_file: SuspiciousFile | None = None,
         open_ports: list[int] | None = None,
         dns_anomaly: bool = False,
-        threat_severity: str = "none",
-        host_isolated: bool = False,
+        threat_severity: HostStatus = "none",
         step_number: int = 0
     ):
         
@@ -31,5 +30,4 @@ class State:
             print("Value Error: invalid threat severity found within agent state")
             raise ValueError
 
-        self.host_isolated = host_isolated
         self.step_number = step_number
