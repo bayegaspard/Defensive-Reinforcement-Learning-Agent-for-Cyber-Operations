@@ -1,5 +1,5 @@
-from enums import HostStatus, ThreatSeverity
-from suspicious_file import SuspiciousFile
+from src.environment.enums import HostStatus, ThreatSeverity
+from src.environment.suspicious_file import SuspiciousFile
 
 
 class State:
@@ -31,3 +31,13 @@ class State:
             raise ValueError
 
         self.step_number = step_number
+
+    def to_string(self) -> str:
+        return f"""
+host_status: {self.host_status}
+suspicious_file_quarantined: {self.suspicious_file.quarantined if self.suspicious_file else None}
+open_ports: {self.open_ports}
+dns_anomaly: {self.dns_anomaly}
+threat_severity: {self.threat_severity}
+step_number: {self.step_number}
+"""

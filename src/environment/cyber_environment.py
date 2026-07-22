@@ -1,5 +1,5 @@
-from enums import ThreatSeverity,HostStatus
-from suspicious_file import SuspiciousFile
+from src.environment.enums import ThreatSeverity,HostStatus
+from src.environment.suspicious_file import SuspiciousFile
 
 
 class CyberEnvironment:

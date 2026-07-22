@@ -1,4 +1,4 @@
-from environment.cyber_environment import CyberEnvironment
+from src.environment.cyber_environment import CyberEnvironment
 from src.environment.enums import FileAnalysis
 
 def quarantine_file(environment: CyberEnvironment):

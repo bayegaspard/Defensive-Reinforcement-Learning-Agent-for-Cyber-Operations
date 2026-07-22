@@ -1,4 +1,4 @@
-from enums import FileAnalysis
+from src.environment.enums import FileAnalysis
 
 
 class SuspiciousFile:

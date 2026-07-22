@@ -1,6 +1,6 @@
-from cyber_environment import CyberEnvironment
-from state import State
-from suspicious_file import SuspiciousFile
+from src.environment.cyber_environment import CyberEnvironment
+from src.environment.state import State
+from src.environment.suspicious_file import SuspiciousFile
 
 def build_observation(environment: CyberEnvironment) -> State:
 
@@ -16,12 +16,10 @@ def build_observation(environment: CyberEnvironment) -> State:
         )
 
     return State(        
-
-        host_status=environment.host_status.value, 
+        host_status=environment.host_status, 
         suspicious_file=observed_file,
         open_ports=environment.open_ports,
         dns_anomaly=environment.dns_anomaly,
         threat_severity=environment.actual_threat_severity, #TODO later make observed severity imperfect or derived from telemetry
-        host_isolated=environment.host_isolated,
         step_number=environment.current_step
     )
